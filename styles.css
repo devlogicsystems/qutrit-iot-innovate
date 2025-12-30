@@ -1,0 +1,93 @@
+/* Base styles from index.css */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 210 100% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 100% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 100% 9%;
+  --primary: 210 100% 9%;
+  --primary-foreground: 180 100% 98%;
+  --secondary: 187 68% 51%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 210 20% 45%;
+  --accent: 187 68% 51%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 30% 88%;
+  --input: 210 30% 88%;
+  --ring: 187 68% 51%;
+  --radius: 0.75rem;
+
+  /* Qutrit brand colors */
+  --navy-deep: 210 100% 9%;
+  --navy-dark: 210 85% 17%;
+  --blue-primary: 210 67% 42%;
+  --blue-mid: 199 65% 51%;
+  --cyan-bright: 187 68% 51%;
+  --cyan-light: 188 85% 70%;
+}
+
+.dark {
+  --background: 210 100% 9%;
+  --foreground: 180 100% 98%;
+  --card: 210 85% 17%;
+  --card-foreground: 180 100% 98%;
+  --popover: 210 85% 17%;
+  --popover-foreground: 180 100% 98%;
+  --primary: 187 68% 51%;
+  --primary-foreground: 210 100% 9%;
+  --secondary: 210 67% 42%;
+  --secondary-foreground: 180 100% 98%;
+  --muted: 210 40% 25%;
+  --muted-foreground: 210 20% 70%;
+  --accent: 187 68% 51%;
+  --accent-foreground: 210 100% 9%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 210 40% 25%;
+  --input: 210 40% 25%;
+  --ring: 187 68% 51%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Animation Utility Classes to match standard CSS with Tailwind Text */
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+  opacity: 0; 
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* These will be triggered by Intersection Observer adding a 'visible' class */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.visible {
+  /* Animation is applied by the specific animation class, 
+     here we just ensure opacity waits for the class */
+}

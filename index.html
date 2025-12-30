@@ -1,30 +1,1056 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qutrit Innovations - IoT Solutions for Smart Infrastructure</title>
-    <meta name="description" content="Leading IoT solutions provider in India. Reduce operational costs with our innovative device communication technology for industrial automation and massive IoT implementations." />
+    <meta name="description"
+        content="Leading IoT solutions provider in India. Reduce operational costs with our innovative device communication technology for industrial automation and massive IoT implementations." />
     <meta name="author" content="Qutrit Innovations Pvt. Ltd." />
-    <meta name="keywords" content="IoT, Internet of Things, Industrial Automation, Smart Infrastructure, IoT India, Home Automation, Massive IoT" />
+    <meta name="keywords"
+        content="IoT, Internet of Things, Industrial Automation, Smart Infrastructure, IoT India, Home Automation, Massive IoT" />
 
     <meta property="og:title" content="Qutrit Innovations - IoT Solutions for Smart Infrastructure" />
-    <meta property="og:description" content="Leading IoT solutions provider in India. Reduce operational costs with our innovative device communication technology." />
+    <meta property="og:description"
+        content="Leading IoT solutions provider in India. Reduce operational costs with our innovative device communication technology." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Qutrit Innovations - IoT Solutions" />
-    <meta name="twitter:description" content="Reduce IoT operational costs with our innovative device communication technology" />
+    <meta name="twitter:description"
+        content="Reduce IoT operational costs with our innovative device communication technology" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ["class"],
+            theme: {
+                container: {
+                    center: true,
+                    padding: "2rem",
+                    screens: {
+                        "2xl": "1400px",
+                    },
+                },
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    keyframes: {
+                        "fade-in": {
+                            "0%": { opacity: "0", transform: "translateY(20px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        },
+                        "fade-in-up": {
+                            "0%": { opacity: "0", transform: "translateY(30px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        },
+                        "scale-in": {
+                            "0%": { transform: "scale(0.95)", opacity: "0" },
+                            "100%": { transform: "scale(1)", opacity: "1" }
+                        },
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-10px)" }
+                        }
+                    },
+                    animation: {
+                        "fade-in": "fade-in 0.6s ease-out forwards",
+                        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+                        "scale-in": "scale-in 0.4s ease-out forwards",
+                        "float": "float 3s ease-in-out infinite",
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-foreground font-sans">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="assets/qutrit-logo.png" alt="Qutrit Innovations" class="h-10 lg:h-12 w-auto">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden lg:flex items-center gap-8">
+                    <li><a href="#home"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Home</a>
+                    </li>
+                    <li><a href="#features"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Features</a>
+                    </li>
+                    <li><a href="#products"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Products</a>
+                    </li>
+                    <li><a href="#use-cases"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Use
+                            Cases</a></li>
+                    <li><a href="#testimonials"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Testimonials</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="nav-link text-sm font-medium transition-colors duration-200 hover:text-secondary text-white">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop CTA -->
+                <a href="#contact"
+                    class="hidden lg:inline-flex px-5 py-2.5 rounded-full bg-secondary text-white font-medium text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    Get Started
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="menu-btn lg:hidden p-2 rounded-lg transition-colors text-white" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="menu-icon"></i>
+                    <i data-lucide="x" class="close-icon" style="display: none;"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div
+            class="mobile-menu lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none">
+            <ul class="container mx-auto px-4 py-4 flex flex-col gap-2">
+                <li><a href="#home"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Home</a>
+                </li>
+                <li><a href="#features"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Features</a>
+                </li>
+                <li><a href="#products"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Products</a>
+                </li>
+                <li><a href="#use-cases"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Use
+                        Cases</a></li>
+                <li><a href="#testimonials"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Testimonials</a>
+                </li>
+                <li><a href="#contact"
+                        class="mobile-link block py-3 px-4 text-foreground font-medium rounded-lg hover:bg-muted transition-colors">Contact</a>
+                </li>
+                <li class="pt-2">
+                    <a href="#contact"
+                        class="mobile-link block w-full text-center py-3 px-4 rounded-full bg-secondary text-white font-medium transition-all hover:scale-[1.02]">
+                        Get Started
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        <!-- Hero Carousel -->
+        <section id="home" class="relative h-screen overflow-hidden bg-slate-900">
+            <!-- Carousel Container -->
+            <div id="hero-carousel"
+                class="flex h-full w-full transition-transform duration-700 ease-in-out cursor-grab active:cursor-grabbing">
+
+                <!-- Slide 1: Cascade Architecture -->
+                <div class="min-w-full h-full relative flex items-center justify-center">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('assets/QIPL-background-1.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/40"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="container mx-auto px-4 relative z-10 text-center text-white">
+                        <div class="animate-fade-in-up">
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                                Revolutionizing IoT with <br>
+                                <span
+                                    class="bg-gradient-to-r from-accent via-secondary to-accent bg-clip-text text-transparent">The
+                                    Cascade Architecture</span>
+                            </h1>
+                            <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                                Intelligent hierarchical design and local-first communication. Reduce operational costs
+                                and eliminate cloud fees.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button
+                                    onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                                    class="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105 shadow-lg shadow-accent/25">
+                                    Get Started
+                                </button>
+                                <button
+                                    onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })"
+                                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-semibold px-8 py-4 rounded-lg transition-all">
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Massive IoT -->
+                <div class="min-w-full h-full relative flex items-center justify-center">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('assets/QIPL-background-2.png');">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/40"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="container mx-auto px-4 relative z-10 text-center text-white">
+                        <div class="animate-fade-in-up">
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                                Scalable Solutions for <br>
+                                <span class="text-accent">Massive IoT Deployments</span>
+                            </h1>
+                            <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                                From 10 to 10,000+ nodes. Our infrastructure scales effortlessly to meet the demands of
+                                smart cities and industrial complexes.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button
+                                    onclick="document.getElementById('use-cases').scrollIntoView({ behavior: 'smooth' })"
+                                    class="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105 shadow-lg shadow-accent/25">
+                                    View Use Cases
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: New Innovations -->
+                <div class="min-w-full h-full relative flex items-center justify-center">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');">
+                        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/40"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="container mx-auto px-4 relative z-10 text-center text-white">
+                        <div class="animate-fade-in-up">
+                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                                Pioneering <br>
+                                <span class="text-secondary">Future Innovations</span>
+                            </h1>
+                            <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                                Configuration Web App, Intelligent Alerts, and Health Monitoring. We define the bleeding
+                                edge of IoT technology.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button
+                                    onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })"
+                                    class="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:scale-105 shadow-lg shadow-accent/25">
+                                    Explore Products
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navigation Controls -->
+            <button id="prev-slide"
+                class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all z-20 hover:scale-110">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+            <button id="next-slide"
+                class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all z-20 hover:scale-110">
+                <i data-lucide="chevron-right" class="w-8 h-8"></i>
+            </button>
+
+
+
+            <!-- Indicators -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+                <button
+                    class="slide-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white transition-all"
+                    data-index="0"></button>
+                <button
+                    class="slide-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white transition-all"
+                    data-index="1"></button>
+                <button
+                    class="slide-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/50 hover:bg-white transition-all"
+                    data-index="2"></button>
+            </div>
+        </section>
+
+        <!-- Key Metrics Section -->
+        <section class="py-12 bg-slate-900 border-b border-slate-800 relative z-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Revolutionizing IoT: Core Metrics for the Next
+                        Gateway Era</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <div
+                        class="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-accent/20">
+                                <i data-lucide="zap" class="h-6 w-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white">45%</div>
+                                <div class="text-sm font-medium text-slate-300">Setup Cost Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-accent/20">
+                                <i data-lucide="trending-down" class="h-6 w-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white">90%</div>
+                                <div class="text-sm font-medium text-slate-300">Bandwidth Savings</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 rounded-lg bg-accent/20">
+                                <i data-lucide="clock" class="h-6 w-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-white">75%</div>
+                                <div class="text-sm font-medium text-slate-300">Faster Deployment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-20 bg-background" id="features">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                        Why Choose Qutrit?
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Cutting-edge technology meets practical innovation. Our IoT platform delivers unmatched value
+                        across every dimension.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    <!-- Feature 1: Edge-Centric Architecture (Large Featured Card with Image) -->
+                    <div class="lg:col-span-2 lg:row-span-2 group relative overflow-hidden border border-border hover:border-accent/50 bg-slate-900 rounded-3xl hover:shadow-2xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0s">
+                        <!-- Background Image - Now highly visible -->
+                        <div class="absolute inset-0 opacity-70 group-hover:opacity-90 transition-opacity duration-500">
+                            <img src="assets/edge-architecture.jpg" alt="Edge-Centric Architecture"
+                                class="w-full h-full object-cover">
+                        </div>
+
+                        <!-- Gradient Overlay - Only on bottom half for text readability -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/60 to-transparent">
+                        </div>
+
+                        <div class="relative z-10 h-full flex flex-col justify-end p-8">
+                            <!-- Content container with glassmorphic background -->
+                            <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div
+                                        class="w-14 h-14 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300 shadow-lg border border-accent/30 flex-shrink-0">
+                                        <i data-lucide="server"
+                                            class="h-7 w-7 text-accent group-hover:text-white transition-colors"></i>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                                            Edge-Centric Architecture</h3>
+                                        <p class="text-base text-slate-100 leading-relaxed">Localized data processing at
+                                            the source reduces latency and eliminates cloud fees. Experience the power
+                                            of truly
+                                            distributed computing.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Easy Configuration (Vertical - Top Right) -->
+                    <div class="lg:row-span-1 group border border-border hover:border-accent/50 bg-card rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.1s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="code" class="h-6 w-6 text-green-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">Easy Configuration</h3>
+                        <p class="text-sm text-muted-foreground">Intuitive web application for localized setup,
+                            scheduling, alarms, and heartbeat monitoring.</p>
+                    </div>
+
+                    <!-- Feature 3: Enterprise-Grade Security (Vertical - Second Row Right) -->
+                    <div class="lg:row-span-1 group border border-border hover:border-accent/50 bg-card rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.2s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield-check" class="h-6 w-6 text-blue-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">Enterprise-Grade Security</h3>
+                        <p class="text-sm text-muted-foreground">Robust encryption protocols, access controls, and
+                            automated backups protect your sensitive data 24/7.</p>
+                    </div>
+
+                    <!-- Feature 4: Scalable Architecture (Wide - Third Row) -->
+                    <div class="lg:col-span-2 group border border-border hover:border-secondary/50 bg-gradient-to-br from-card to-secondary/5 rounded-3xl p-6 hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-6 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.3s">
+                        <div class="flex-1">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="layers" class="h-6 w-6 text-secondary"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-card-foreground mb-2">Scalable Architecture</h3>
+                            <p class="text-sm text-muted-foreground">From home automation to massive infrastructure
+                                projects - scale seamlessly as your needs grow.</p>
+                        </div>
+                        <div
+                            class="hidden md:flex w-24 h-24 bg-gradient-to-br from-secondary/10 to-transparent rounded-2xl items-center justify-center">
+                            <i data-lucide="trending-up" class="h-12 w-12 text-secondary/50"></i>
+                        </div>
+                    </div>
+
+                    <!-- Feature 5: WiFi Range Extension (Vertical - Third Row Right) -->
+                    <div class="group border border-border hover:border-accent/50 bg-card rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.4s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="wifi" class="h-6 w-6 text-orange-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">WiFi Range Extension</h3>
+                        <p class="text-sm text-muted-foreground">Proprietary antenna design extends WiFi range by
+                            200-300% without repeaters.</p>
+                    </div>
+
+                    <!-- Feature 6: Rapid Deployment (Vertical - Fourth Row Right) -->
+                    <div class="group border border-border hover:border-accent/50 bg-gradient-to-br from-card to-accent/5 rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.5s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="zap" class="h-6 w-6 text-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">Rapid Deployment</h3>
+                        <p class="text-sm text-muted-foreground">Reduce implementation time by 50% with our
+                            plug-and-play IoT nodes and automated configuration.</p>
+                    </div>
+
+                    <!-- Feature 7: 45% Cost Effective (Vertical) -->
+                    <div class="group border border-border hover:border-accent/50 bg-gradient-to-br from-card to-purple-500/5 rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.6s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="trending-down" class="h-6 w-6 text-purple-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">45% Cost Effective</h3>
+                        <p class="text-sm text-muted-foreground">Server node and edge nodes reduce Capex requirement of
+                            implementing same node.</p>
+                    </div>
+
+                    <!-- Feature 8: 90% Bandwidth Saving (Vertical) -->
+                    <div class="group border border-border hover:border-accent/50 bg-gradient-to-br from-card to-cyan-500/5 rounded-3xl p-6 hover:shadow-xl transition-all duration-300 animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.7s">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="database" class="h-6 w-6 text-cyan-500"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-card-foreground mb-2">90% Bandwidth Saving</h3>
+                        <p class="text-sm text-muted-foreground">One Server node collects data from 10 edge nodes which
+                            reduces traffic to server resulting less bandwidth requirement.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <!-- Products -->
+        <section class="py-20 bg-slate-950 relative overflow-hidden" id="products">
+            <!-- Background Decoration -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(62,189,214,0.1),transparent_50%)]">
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+                        Our IoT Solutions
+                    </h2>
+                    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                        Complete ecosystem for seamless IoT deployment and management
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Product 1 -->
+                    <div class="group relative overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(62,189,214,0.15)] bg-white/5 backdrop-blur-lg rounded-2xl animate-on-scroll scale-in-trigger"
+                        data-delay="0s">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="p-8 relative z-10">
+                            <div class="mb-6 flex items-start justify-between">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner ring-1 ring-white/10">
+                                    <i data-lucide="network"
+                                        class="h-8 w-8 text-accent drop-shadow-[0_0_8px_rgba(62,189,214,0.5)]"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="h-6 w-6 text-accent/50"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                                IoT Communication Nodes</h3>
+                            <p class="text-primary-foreground/70 leading-relaxed mb-6 font-light">High-performance nodes
+                                with
+                                innovative inter-device communication protocols. Handle massive data volumes with
+                                guaranteed accuracy and integrity.</p>
+
+                            <div class="space-y-3 pt-6 border-t border-white/5">
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Real-time
+                                    data processing
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Robust
+                                    encryption
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Scalable
+                                    architecture
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="group relative overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(62,189,214,0.15)] bg-white/5 backdrop-blur-lg rounded-2xl animate-on-scroll scale-in-trigger"
+                        data-delay="0.15s">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="p-8 relative z-10">
+                            <div class="mb-6 flex items-start justify-between">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner ring-1 ring-white/10">
+                                    <i data-lucide="smartphone"
+                                        class="h-8 w-8 text-accent drop-shadow-[0_0_8px_rgba(62,189,214,0.5)]"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="h-6 w-6 text-accent/50"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                                Configuration Web App</h3>
+                            <p class="text-primary-foreground/70 leading-relaxed mb-6 font-light">Intuitive web
+                                interface for
+                                complete device management. Configure, monitor, and control your entire IoT network
+                                from anywhere.</p>
+
+                            <div class="space-y-3 pt-6 border-t border-white/5">
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Localized
+                                    connection setup
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Schedule
+                                    configuration
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Alarm
+                                    management
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="group relative overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(62,189,214,0.15)] bg-white/5 backdrop-blur-lg rounded-2xl animate-on-scroll scale-in-trigger"
+                        data-delay="0.3s">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="p-8 relative z-10">
+                            <div class="mb-6 flex items-start justify-between">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner ring-1 ring-white/10">
+                                    <i data-lucide="bell"
+                                        class="h-8 w-8 text-accent drop-shadow-[0_0_8px_rgba(62,189,214,0.5)]"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="h-6 w-6 text-accent/50"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                                Intelligent Alerts</h3>
+                            <p class="text-primary-foreground/70 leading-relaxed mb-6 font-light">Configurable triggers
+                                and multi-channel notifications. Stay informed of critical events in real-time.</p>
+
+                            <div class="space-y-3 pt-6 border-t border-white/5">
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Custom
+                                    triggers
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2"
+                                        class="w-4 h-4 text-accent/70 mr-3"></i>Multi-channel support
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Priority
+                                    levels
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="group relative overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(62,189,214,0.15)] bg-white/5 backdrop-blur-lg rounded-2xl animate-on-scroll scale-in-trigger"
+                        data-delay="0.45s">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                        <div class="p-8 relative z-10">
+                            <div class="mb-6 flex items-start justify-between">
+                                <div
+                                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner ring-1 ring-white/10">
+                                    <i data-lucide="activity"
+                                        class="h-8 w-8 text-accent drop-shadow-[0_0_8px_rgba(62,189,214,0.5)]"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="h-6 w-6 text-accent/50"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                                Health Monitoring</h3>
+                            <p class="text-primary-foreground/70 leading-relaxed mb-6 font-light">Real-time status and
+                                predictive analytics prevent downtime. Ensure your network is always healthy.</p>
+
+                            <div class="space-y-3 pt-6 border-t border-white/5">
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Predictive
+                                    maintenance
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Live status
+                                    updates
+                                </div>
+                                <div class="flex items-center text-sm text-primary-foreground/60">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-accent/70 mr-3"></i>Performance
+                                    history
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="py-20 bg-background" id="use-cases">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                        Market Applications
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Proven use cases across residential, industrial, and infrastructure deployments
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                    <!-- Case 1 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent transition-all duration-300 bg-card rounded-xl animate-on-scroll fade-in-up-trigger"
+                        data-delay="0s">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 relative">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                                    <i data-lucide="home"
+                                        class="h-6 w-6 text-accent group-hover:text-white transition-colors duration-300"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-card-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                                Home/Smart Buildings</h3>
+                            <p class="text-sm text-muted-foreground leading-relaxed mb-4">Lighting, HVAC, metering, and
+                                cost-efficient control. Smart home automation and energy optimization.</p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="text-xs font-semibold text-accent">$101B Market by 2030</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Case 2 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent transition-all duration-300 bg-card rounded-xl animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.1s">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 relative">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                                    <i data-lucide="factory"
+                                        class="h-6 w-6 text-accent group-hover:text-white transition-colors duration-300"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-card-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                                Industrial IoT</h3>
+                            <p class="text-sm text-muted-foreground leading-relaxed mb-4">Equipment monitoring,
+                                predictive maintenance, production optimization, and environmental controls.</p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="text-xs font-semibold text-accent">Strong Growth Forecast (2025-2030)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Case 3 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent transition-all duration-300 bg-card rounded-xl animate-on-scroll fade-in-up-trigger"
+                        data-delay="0.2s">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-bl-full transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500">
+                        </div>
+                        <div class="p-6 relative">
+                            <div class="mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                                    <i data-lucide="building-2"
+                                        class="h-6 w-6 text-accent group-hover:text-white transition-colors duration-300"></i>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-card-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                                Infrastructure/Smart City</h3>
+                            <p class="text-sm text-muted-foreground leading-relaxed mb-4">Traffic management,
+                                environmental sensing, utilities optimization, and emergency coordination.</p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="text-xs font-semibold text-accent">Emerging High-Growth Segment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20 bg-gradient-to-br from-muted/30 via-background to-muted/30" id="testimonials">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-foreground mb-4">
+                        Trusted by Industry Leaders
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        See what our clients say about revolutionizing their IoT infrastructure
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Testimonial 1 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 bg-card hover:shadow-xl rounded-xl animate-on-scroll scale-in-trigger"
+                        data-delay="0s">
+                        <div class="p-8">
+                            <div class="mb-6">
+                                <i data-lucide="quote"
+                                    class="h-10 w-10 text-accent/30 group-hover:text-accent/50 transition-colors duration-300"></i>
+                            </div>
+                            <p class="text-card-foreground leading-relaxed mb-6 italic">
+                                "Qutrit's IoT solution reduced our deployment costs by 65% and implementation time by
+                                half. The web interface is incredibly intuitive, making configuration a breeze."
+                            </p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="font-semibold text-card-foreground mb-1">Rajesh Kumar</p>
+                                <p class="text-sm text-muted-foreground">CTO, SmartCity Solutions</p>
+                                <p class="text-xs text-accent mt-1">Leading Smart Infrastructure Provider</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 bg-card hover:shadow-xl rounded-xl animate-on-scroll scale-in-trigger"
+                        data-delay="0.15s">
+                        <div class="p-8">
+                            <div class="mb-6">
+                                <i data-lucide="quote"
+                                    class="h-10 w-10 text-accent/30 group-hover:text-accent/50 transition-colors duration-300"></i>
+                            </div>
+                            <p class="text-card-foreground leading-relaxed mb-6 italic">
+                                "The security and reliability of Qutrit's nodes are outstanding. We've deployed over
+                                5,000 devices across our facilities with zero downtime. Game-changing technology."
+                            </p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="font-semibold text-card-foreground mb-1">Priya Sharma</p>
+                                <p class="text-sm text-muted-foreground">Director of Operations</p>
+                                <p class="text-xs text-accent mt-1">Major Manufacturing Conglomerate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="group relative overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 bg-card hover:shadow-xl rounded-xl animate-on-scroll scale-in-trigger"
+                        data-delay="0.3s">
+                        <div class="p-8">
+                            <div class="mb-6">
+                                <i data-lucide="quote"
+                                    class="h-10 w-10 text-accent/30 group-hover:text-accent/50 transition-colors duration-300"></i>
+                            </div>
+                            <p class="text-card-foreground leading-relaxed mb-6 italic">
+                                "From prototype to production in record time. The automated configuration and robust
+                                encryption gave us the confidence to scale rapidly. Highly recommended."
+                            </p>
+                            <div class="pt-4 border-t border-border">
+                                <p class="font-semibold text-card-foreground mb-1">Amit Patel</p>
+                                <p class="text-sm text-muted-foreground">Founder & CEO</p>
+                                <p class="text-xs text-accent mt-1">Industrial Automation Startup</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section
+            class="py-20 bg-gradient-to-br from-primary via-[hsl(var(--navy-dark))] to-[hsl(var(--blue-primary))] relative overflow-hidden"
+            id="contact">
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 left-20 w-64 h-64 bg-secondary rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+                        Let's Transform Your IoT Infrastructure
+                    </h2>
+                    <p class="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+                        Get in touch to discuss how Qutrit can help reduce costs and accelerate your IoT deployment
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Contact Information -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div
+                            class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="mail" class="h-6 w-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Email Us</h3>
+                                    <p class="text-sm text-primary-foreground/70">info@qutritinnovations.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="phone" class="h-6 w-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Call Us</h3>
+                                    <p class="text-sm text-primary-foreground/70">+91 98765 43210</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map-pin" class="h-6 w-6 text-accent"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Visit Us</h3>
+                                    <p class="text-sm text-primary-foreground/70">S. No. 18, Plot No. 53, Karvenagar,
+                                        Pune - 411052, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-8">
+                            <form class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-white mb-2">Name
+                                            *</label>
+                                        <input id="name" name="name" type="text" required maxlength="100"
+                                            class="flex h-10 w-full rounded-md px-3 py-2 text-base md:text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                                            placeholder="Your name">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-white mb-2">Email
+                                            *</label>
+                                        <input id="email" name="email" type="email" required maxlength="255"
+                                            class="flex h-10 w-full rounded-md px-3 py-2 text-base md:text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                                            placeholder="your@email.com">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="company"
+                                        class="block text-sm font-medium text-white mb-2">Company</label>
+                                    <input id="company" name="company" type="text" maxlength="100"
+                                        class="flex h-10 w-full rounded-md px-3 py-2 text-base md:text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                                        placeholder="Your company name">
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-white mb-2">Message
+                                        *</label>
+                                    <textarea id="message" name="message" required maxlength="1000" rows="5"
+                                        class="flex min-h-[80px] w-full rounded-md px-3 py-2 text-base md:text-sm disabled:cursor-not-allowed disabled:opacity-50 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-none"
+                                        placeholder="Tell us about your IoT project..."></textarea>
+                                </div>
+
+                                <button type="submit"
+                                    class="w-full bg-accent hover:bg-accent/90 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-[0_0_30px_rgba(62,189,214,0.4)] transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                                    Send Message
+                                    <i data-lucide="send" class="ml-2 h-5 w-5"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-primary-foreground py-12 border-t border-white/10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Logo and Description -->
+                <div>
+                    <img src="assets/qutrit-logo.png" alt="Qutrit Innovations" class="h-16 w-auto mb-4">
+                    <p class="text-sm text-primary-foreground/70 leading-relaxed">
+                        Revolutionizing IoT with innovative device communication technology.
+                        Reducing costs, accelerating deployment, securing your future.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features"
+                                class="text-sm text-primary-foreground/70 hover:text-accent transition-colors duration-200">Features</a>
+                        </li>
+                        <li><a href="#products"
+                                class="text-sm text-primary-foreground/70 hover:text-accent transition-colors duration-200">Products</a>
+                        </li>
+                        <li><a href="#use-cases"
+                                class="text-sm text-primary-foreground/70 hover:text-accent transition-colors duration-200">Use
+                                Cases</a></li>
+                        <li><a href="#testimonials"
+                                class="text-sm text-primary-foreground/70 hover:text-accent transition-colors duration-200">Testimonials</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-sm text-primary-foreground/70 hover:text-accent transition-colors duration-200">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Information</h3>
+                    <ul class="space-y-2 text-sm text-primary-foreground/70">
+                        <li>Qutrit Innovations Pvt. Ltd.</li>
+                        <li>S. No. 18, Plot No. 53, Karvenagar</li>
+                        <li>Pune - 411052, India</li>
+                        <li class="mt-4">
+                            <a href="mailto:info@qutritinnovations.com"
+                                class="hover:text-accent transition-colors duration-200">
+                                info@qutritinnovations.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center">
+                <p class="text-sm text-primary-foreground/70">
+                    © 2025 Qutrit Innovations Pvt. Ltd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
