@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.scrollY > 20) {
             header.classList.add('bg-background/95', 'backdrop-blur-md', 'shadow-md', 'border-b', 'border-border');
             header.classList.remove('bg-transparent');
-            
+
             // Update link colors for scrolled state
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('text-white');
@@ -14,6 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             document.querySelector('.menu-btn').classList.remove('text-white');
             document.querySelector('.menu-btn').classList.add('text-foreground');
+
+            // Update company name color for scrolled state
+            const companyName = document.querySelector('.company-name');
+            if (companyName) {
+                companyName.classList.remove('text-white');
+                companyName.classList.add('text-foreground');
+            }
+            const companySuffix = document.querySelector('.company-name-suffix');
+            if (companySuffix) {
+                companySuffix.classList.remove('text-slate-400');
+                companySuffix.classList.add('text-slate-500');
+            }
 
         } else {
             header.classList.remove('bg-background/95', 'backdrop-blur-md', 'shadow-md', 'border-b', 'border-border');
@@ -26,6 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             document.querySelector('.menu-btn').classList.add('text-white');
             document.querySelector('.menu-btn').classList.remove('text-foreground');
+
+            // Restore company name color for transparent state
+            const companyName = document.querySelector('.company-name');
+            if (companyName) {
+                companyName.classList.add('text-white');
+                companyName.classList.remove('text-foreground');
+            }
+            const companySuffix = document.querySelector('.company-name-suffix');
+            if (companySuffix) {
+                companySuffix.classList.add('text-slate-400');
+                companySuffix.classList.remove('text-slate-500');
+            }
         }
     };
     window.addEventListener('scroll', updateHeader);
@@ -57,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu on link click
     document.querySelectorAll('.mobile-link').forEach(link => {
         link.addEventListener('click', () => {
-             mobileMenu.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
-             mobileMenu.classList.remove('opacity-100', 'translate-y-0');
-             menuIcon.style.display = 'block';
-             closeIcon.style.display = 'none';
+            mobileMenu.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+            menuIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
         });
     });
 
@@ -91,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const element = entry.target;
                 const delay = element.getAttribute('data-delay') || '0s';
                 element.style.animationDelay = delay;
-                
+
                 if (element.classList.contains('fade-in-up-trigger')) {
                     element.classList.add('animate-fade-in-up');
                     element.style.opacity = '1';
@@ -102,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     element.classList.add('animate-scale-in');
                     element.style.opacity = '1';
                 }
-                
+
                 observer.unobserve(element);
             }
         });
@@ -119,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
-            
+
             btn.disabled = true;
             btn.textContent = 'Sending...';
 
@@ -128,12 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             alert('Message sent successfully! We will get back to you within 24 hours.');
             form.reset();
-            
+
             btn.disabled = false;
             btn.innerHTML = originalText;
         });
     }
-    
+
     // --- Hero Carousel ---
     const carousel = document.getElementById('hero-carousel');
     if (carousel) {
